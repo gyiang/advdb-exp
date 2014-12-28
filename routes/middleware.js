@@ -32,6 +32,10 @@ exports.initLocals = function(req, res, next) {
 	];
 	
 	locals.user = req.user;
+	locals.page = {
+		title: 'advdb',
+		path: req.url.split("?")[0] // strip the query - handy for redirecting back to the page
+	};
 	
 	next();
 	
