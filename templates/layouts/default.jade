@@ -9,7 +9,8 @@ html
 			script.
 				var _sf_startpt=(new Date()).getTime()
 		meta(charset="utf-8")
-		meta(name="viewport", content="width=device-width, initial-scale=1.0")
+		meta(name="viewport", content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width")
+		//-meta(name="viewport", content="width=device-width, initial-scale=1.0")
 		meta(http-equiv="X-UA-Compatible" content="IE=edge")
 
 		title= title || 'advdbsys'
@@ -37,8 +38,8 @@ html
 		block head
 
 	//- HTML BODY
-	body
-
+	body(class=section ? 'sitesection-' + section : null)
+		.site-wrapper.has-sticky-footer
 		//- HEADER
 		#header: .container
 
@@ -77,27 +78,19 @@ html
 						//- 	else
 						//- 		li: a(href='/keystone/signin') Sign In-/
 
-		//- BODY
-		#body
+			//- BODY
+			block body
+				main.site-body(role='main')
+					block intro
 
-			//- NOTE:
-			//- There is no .container wrapping class around body blocks to allow more flexibility in design.
-			//- Remember to include it in your templates when you override the intro and content blocks!
+					+flash-messages(messages)
 
-			//- The Intro block appears above flash messages (used for temporary information display)
-			block intro
+					block content
 
-			//- Flash messages allow you to display once-off status messages to users, e.g. form
-			//- validation errors, success messages, etc.
-			+flash-messages(messages)
+			//-block footer
 
-			//- The content block should contain the body of your template's content
-			block content
-
-
-
-		//- FOOTER
-		.container: #footer
+			//- FOOTER
+			.container: #footer
 
 			//- You don't _have_ to include a link saying your site is powered by KeystoneJS, but we appreciate it!
 			p Powered by KeystoneJS.

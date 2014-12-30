@@ -31,7 +31,7 @@ mixin form-join(args)
 										each error, key in form.error.errors
 											li!= error.msg
 					
-					- var checkFormError = function(key) { return form.error && form.error.errors && form.error.errors[key] ? 'has-error' : null }
+				- var checkFormError = function(key) { return form.error && form.error.errors && form.error.errors[key] ? 'has-error' : null }
 				.form-groups
 					.form-group(class=!args.modal ? checkFormError('firstname') : null)
 						label(for='firstname').sr-only First name
