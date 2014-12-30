@@ -101,15 +101,30 @@ html
 
 			//- You don't _have_ to include a link saying your site is powered by KeystoneJS, but we appreciate it!
 			p Powered by KeystoneJS.
-
+			
+		//- MODALS
+		block modal
+		if !user
+			#modal-auth(tabindex="-1", role="dialog", aria-labelledby="signin", aria-hidden="true").modal.fade
+				.modal-dialog
+					.modal-content
+						+auth-forms({ modal: true, initial: 'signin' })
 
 
 		//- JAVASCRIPT
+		//- JAVASCRIPT
+		script(src='/js/lib/jquery/jquery-1.10.2.min.js')
+		script(src='/js/lib/jquery/jquery.cookie.min.js')
+		script(src='/js/lib/bootstrap/collapse.js')
+		script(src='/js/lib/bootstrap/dropdown.js')
+		script(src='/js/lib/bootstrap/modal.js')
+		script(src='/js/ui.js')
 
 		//- jQuery 1.11.1 is included by default, and required by both Bootstrap
 		//- and the KeystoneJS Content Editor. If you are not targeting IE8,
 		//- you can upgrade to 2.1.1 (also bundled) for better performance.
-		script(src='/js/lib/jquery/jquery-1.11.1.min.js')
+		//-script(src='/js/lib/jquery/jquery-1.11.1.min.js')
+
 
 		//- Customise which Bootstrap javascript files are served by including
 		//- them specifically here, instead of bootstrap-3.2.0.min.js
