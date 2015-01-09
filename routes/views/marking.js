@@ -7,7 +7,11 @@ exports = module.exports = function(req, res) {
 
 	var view = new keystone.View(req, res),
 		locals = res.locals;
-	
+
+	locals.data = {
+		posts: [],
+		categories: []
+	};
 	// Set locals
 	locals.section = 'marking';
 	locals.enquiryTypes = Enquiry.fields.enquiryType.ops;
@@ -35,6 +39,27 @@ exports = module.exports = function(req, res) {
 		});
 		
 	});
+
+
+	// Load the posts
+	view.on('init', function(next) {
+		
+		var q = keystone.list('Post').paginate({
+				page: req.query.page || 1,
+				perPage: 10,
+				maxPages: 10
+			})
+			.where('state', 'published')
+			.sort('-publishedDate')
+			.populate('author categories');
+			
+		q.exec(function(err, results) {
+			locals.data.posts = results;
+			next(err);
+		});
+		
+	});
+
 	
 	if (!req.user) {
 		req.flash('error', 'Please sign in to access marking page.');

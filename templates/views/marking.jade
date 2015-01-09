@@ -25,11 +25,11 @@ block content
 					//- 	label Phone
 					//- 	input(type='text', name='phone', value=formData.phone, placeholder='(optional)').form-control
 					.form-group(class=validationErrors.enquiryType ? 'has-error' : null)
-						label What are you contacting us about?
+						label Marking to
 						select(name='enquiryType').form-control
 							option(value='') (select one)
-							each type in enquiryTypes
-								option(value=type.value, selected=formData.enquiryType == type.value)= type.label
+							each post in locals.data.posts.results 
+								option(value=post.title, selected=formData.enquiryType == post.title)= post.title
 					.form-group(class=validationErrors.message ? 'has-error' : null)
 						label Reason
 						textarea(name='message', placeholder='Leave us a message...' rows=4).form-control= formData.message
