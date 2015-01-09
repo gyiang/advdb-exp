@@ -2,7 +2,9 @@ var keystone = require('keystone'),
 	Enquiry = keystone.list('Enquiry');
 
 exports = module.exports = function(req, res) {
+
 	
+
 	var view = new keystone.View(req, res),
 		locals = res.locals;
 	
@@ -33,7 +35,10 @@ exports = module.exports = function(req, res) {
 		});
 		
 	});
-	
-	view.render('marking');
-	
+	if (!req.user) {
+		req.flash('error', 'Please sign in to access this page.');
+		res.redirect('/signin');
+	} else{
+		view.render('marking');
+	}
 };

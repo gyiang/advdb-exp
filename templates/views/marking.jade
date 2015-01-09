@@ -2,8 +2,8 @@ extends ../layouts/default
 
 block intro
 	.container
-		h1 Mark
-+flash-messages(messages)		
+		h1 评分
++flash-messages(messages)
 block content
 	.container
 		if enquirySubmitted
@@ -14,7 +14,7 @@ block content
 					input(type='hidden', name='action', value='marking')
 					.form-group(class=validationErrors.name ? 'has-error' : null)
 						label Name
-						input(type='text', name='name.full', value=formData['name.full']).form-control
+						input(type='text',readonly=true,name='name.full', value=user.name.first,placeholder=user.name.first).form-control
 					.form-group(class=validationErrors.email ? 'has-error' : null)
 						label Email
 						input(type='email', name='email', value=formData.email).form-control
