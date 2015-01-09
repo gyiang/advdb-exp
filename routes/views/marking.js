@@ -37,7 +37,7 @@ exports = module.exports = function(req, res) {
 	});
 	if (!req.user) {
 		req.flash('error', 'Please sign in to access this page.');
-		res.redirect('/signin');
+		res.redirect('/index');
 	} else{
 		view.render('marking');
 	}
