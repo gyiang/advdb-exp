@@ -9,7 +9,7 @@ var keystone = require('keystone'),
 var User = new keystone.List('User');
 
 User.add({
-	name: { type: String, required: true, index: true },
+	name: { type: Types.Name, required: true, index: true },
 	stuid: { type: String, index: true },
 	email: { type: Types.Email, initial: true, required: true, index: true },
 	password: { type: Types.Password, initial: true, required: true },

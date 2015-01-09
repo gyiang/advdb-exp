@@ -35,8 +35,9 @@ exports = module.exports = function(req, res) {
 		});
 		
 	});
+	
 	if (!req.user) {
-		req.flash('error', 'Please sign in to access this page.');
+		req.flash('error', 'Please sign in to access marking page.');
 		res.redirect('/');
 	} else{
 		view.render('marking');
