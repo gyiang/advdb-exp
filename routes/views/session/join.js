@@ -19,9 +19,15 @@ exports = module.exports = function(req, res) {
 			
 			function(cb) {
 				
-				if (!req.body.firstname || !req.body.lastname || !req.body.email || !req.body.password) {
+				if (!req.body.firstname || !req.body.lastname || !req.body.email || !req.body.password || !req.body.repassword) {
 					req.flash('error', 'Please enter a name, email and password.');
 					return cb(true);
+				}
+
+				if (req.body.password != req.body.repassword) {
+					req.flash('error', 'password != repassword，please check it');
+					return cb(true);
+
 				}
 				
 				return cb();
