@@ -9,17 +9,25 @@ var keystone = require('keystone'),
 var User = new keystone.List('User');
 
 User.add({
-	name: { type: Types.Name, required: true, index: true },
-	stuid: { type: String, index: true },
+	name: { type: Types.Name, required: true, index: true },	
 	email: { type: Types.Email, initial: true, required: true, index: true },
 	password: { type: Types.Password, initial: true, required: true },
+	isAdmin2: { type: Boolean, label: 'Can access', index: true },
+	isCanMark2: { type: Boolean, label: 'Can Marking', index: true ,default: true}
 }, 'Permissions', {
-	isAdmin: { type: Boolean, label: 'Can access', index: true }
+	isAdmin: { type: Boolean, label: 'Can access', index: true },
+	isCanMark: { type: Boolean, label: 'Can Marking', index: true ,default: true}
 });
 
-// Provide access to Keystone
+// stuid: { type: String, index: true },
+
+//Provide access to Keystone
 User.schema.virtual('canAccessKeystone').get(function() {
 	return this.isAdmin;
+});
+
+User.schema.virtual('canMarking').get(function() {
+	return this.isCanMark;
 });
 
 

@@ -25,9 +25,10 @@ exports = module.exports = function(req, res) {
 		var newEnquiry = new Enquiry.model(),
 			updater = newEnquiry.getUpdateHandler(req);
 		
+		// reset changes
 		updater.process(req.body, {
 			flashErrors: true,
-			fields: 'name, email, phone, enquiryType, message',
+			fields: 'name, email, message',
 			errorMessage: 'There was a problem submitting your mark:'
 		}, function(err) {
 			if (err) {
