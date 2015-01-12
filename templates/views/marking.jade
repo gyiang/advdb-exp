@@ -29,6 +29,6 @@ block content
 						input(type='number',name='score',placeholder="<=100").form-control
 					.form-group
 						label Reason
-						textarea(name='reason', placeholder='your marking reason' rows=4).form-control= formData.message
+						textarea(name='reason', placeholder='your marking reason',rows=4,maxlength=140).form-control= formData.message
 					.form-actions
 						button(type='submit').btn.btn-primary Send
