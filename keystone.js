@@ -11,8 +11,8 @@ var keystone = require('keystone');
 
 keystone.init({
 
-	'name': 'advdbpf',
-	'brand': 'advdbpf',
+	'name': 'advdb-R&D',
+	'brand': 'advdb-R&D',
 	
 	'less': 'public',
 	'static': 'public',

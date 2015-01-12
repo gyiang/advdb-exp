@@ -2,7 +2,7 @@ extends ../layouts/default
 
 block intro
 	.container
-		h1 评分
+		h1 Marking
 +flash-messages(messages)
 block content
 	.container
@@ -30,8 +30,11 @@ block content
 							option(value='') (select one)
 							each post in locals.data.posts.results 
 								option(value=post.title, selected=formData.enquiryType == post.title)= post.title
+					.form-group(class=validationErrors.name ? 'has-error' : null)
+						label Score
+						input(type='number',name='score',placeholder="<=100").form-control
 					.form-group(class=validationErrors.message ? 'has-error' : null)
 						label Reason
-						textarea(name='message', placeholder='Leave us a message...' rows=4).form-control= formData.message
+						textarea(name='message', placeholder='your marking reason' rows=4).form-control= formData.message
 					.form-actions
 						button(type='submit').btn.btn-primary Send
