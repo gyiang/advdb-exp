@@ -12,29 +12,23 @@ block content
 			.row: .col-sm-8.col-md-6
 				form(method='post')
 					input(type='hidden', name='action', value='marking')
-					.form-group(class=validationErrors.name ? 'has-error' : null)
+					.form-group
 						label Name
-						input(type='text',readonly=true,name='name.full', value=user.name.first,placeholder=user.name.first).form-control
-					.form-group(class=validationErrors.name ? 'has-error' : null)
+						input(type='text',readonly=true,name='name.first', value=user.name.first).form-control
+					.form-group
 						label Stuid
-						input(type='text',readonly=true,name='name.full', value=user.name.last,placeholder=user.name.last).form-control
-					//- .form-group(class=validationErrors.email ? 'has-error' : null)
-					//- 	label Email
-					//- 	input(type='email',readonly=true, name='email', value=user.email).form-control
-					//- .form-group
-					//- 	label Phone
-					//- 	input(type='text', name='phone', value=formData.phone, placeholder='(optional)').form-control
-					.form-group(class=validationErrors.enquiryType ? 'has-error' : null)
+						input(type='text',readonly=true,name='name.last', value=user.name.last).form-control
+					.form-group
 						label Marking to
-						select(name='enquiryType').form-control
+						select(name='markingto').form-control
 							option(value='') (select one)
 							each post in locals.data.posts.results 
-								option(value=post.title, selected=formData.enquiryType == post.title)= post.title
-					.form-group(class=validationErrors.name ? 'has-error' : null)
+								option(value=post.title, selected=formData.markingto == post.title)= post.title
+					.form-group
 						label Score
 						input(type='number',name='score',placeholder="<=100").form-control
-					.form-group(class=validationErrors.message ? 'has-error' : null)
+					.form-group
 						label Reason
-						textarea(name='message', placeholder='your marking reason' rows=4).form-control= formData.message
+						textarea(name='reason', placeholder='your marking reason' rows=4).form-control= formData.message
 					.form-actions
 						button(type='submit').btn.btn-primary Send

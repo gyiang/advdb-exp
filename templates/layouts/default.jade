@@ -53,7 +53,7 @@ html
 							li(class=(section == link.key ? 'active' : null)): a(href=link.href)= link.label
 					ul.nav.navbar-nav.navbar-right
 							if user
-								li: a(href='/me').user.hidden-xs
+								li: a(href='/').user.hidden-xs
 									//-img(src=(user.photo.exists ? user._.photo.thumbnail(27,27) : user.avatarUrl || '/images/avatar.png'), width=27).img-circle
 									img(src=('/images/avatar.png'), width=27).img-circle
 									=user.name.first

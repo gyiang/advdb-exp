@@ -8,8 +8,12 @@ block content
 		p <strong>Advanced Database Technology  Report & Marking System </strong>
 		hr
 		if user && user.canAccessKeystone
-			p
-				a(href='/keystone/signin').btn.btn-lg.btn-primary Enter
+			if user.name.first!="Admin"
+				p
+					a(href='keystone/posts').btn.btn-lg.btn-primary Report
+			else
+				p
+					a(href='/keystone/').btn.btn-lg.btn-primary Enter
 		//- else
 		//- 	p
 		//- 		a(href='/keystone/signin', style='margin-right: 10px').btn.btn-lg.btn-primary Sign in

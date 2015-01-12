@@ -1,5 +1,5 @@
 var keystone = require('keystone'),
-	Enquiry = keystone.list('Enquiry');
+	Enquiry = keystone.list('Mark');
 
 exports = module.exports = function(req, res) {
 
@@ -14,7 +14,6 @@ exports = module.exports = function(req, res) {
 	};
 	// Set locals
 	locals.section = 'marking';
-	locals.enquiryTypes = Enquiry.fields.enquiryType.ops;
 	locals.formData = req.body || {};
 	locals.validationErrors = {};
 	locals.enquirySubmitted = false;
@@ -28,7 +27,7 @@ exports = module.exports = function(req, res) {
 		// reset changes
 		updater.process(req.body, {
 			flashErrors: true,
-			fields: 'name, email, message',
+			fields: 'name,stuid,markingto,score,reason',
 			errorMessage: 'There was a problem submitting your mark:'
 		}, function(err) {
 			if (err) {
@@ -63,9 +62,13 @@ exports = module.exports = function(req, res) {
 
 	
 	if (!req.user) {
+
 		req.flash('error', 'Please sign in to access marking page.');
 		res.redirect('/');
-	} else{
+	} else if(!req.user.canAccessKeystone){
+		req.flash('error', 'No Access Permissions!!');
+		res.redirect('/');		
+	}else{
 		view.render('marking');
 	}
 };
