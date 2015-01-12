@@ -13,9 +13,9 @@ var Mark = new keystone.List('Mark', {
 Mark.add({
 	name: { type: Types.Name },
 	stuid: { type: String },
-	markingto: { type: String},
-	score:{type: Types.Number,required: true,default:0},
-	reason: { type: Types.Markdown, required: true,default:'' },
+	markingto: { type: String,required: true,initial:true},
+	score:{type: Types.Number,required: true,initial:true},
+	reason: { type: Types.Markdown, required: true,initial:true},
 	createdAt: { type: Date, default: Date.now }
 });
 
