@@ -2,7 +2,7 @@ var keystone = require('keystone'),
 	Types = keystone.Field.Types;
 
 /**
- * Enquiry Model
+ * Mark Model
  * =============
  */
 var Mark = new keystone.List('Mark', {
