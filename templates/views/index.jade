@@ -10,10 +10,17 @@ block content
 		if user && user.canAccessKeystone
 			if user.name.first!="Admin"
 				p
+					each post in data.posts.results
+						if post.state == 'published'
+							a(href='report/post/'+post.slug) 2							
+						else if post.state == 'draft'
+							a(href='keystone/posts/'+post._id) post.title
+
 					a(href='keystone/posts').btn.btn-lg.btn-primary Report
 			else
 				p
 					a(href='/keystone/').btn.btn-lg.btn-primary Enter
+
 		//- else
 		//- 	p
 		//- 		a(href='/keystone/signin', style='margin-right: 10px').btn.btn-lg.btn-primary Sign in
