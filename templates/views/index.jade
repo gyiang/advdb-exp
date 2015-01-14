@@ -7,16 +7,22 @@ block content
 		hr
 		p <strong>Advanced Database Technology  Report & Marking System </strong>
 		hr
-		if user && user.canAccessKeystone
+		if user && user.canAccessKeystone		
 			if user.name.first!="Admin"
 				p
 					each post in data.posts.results
-						if post.state == 'published'
-							a(href='report/post/'+post.slug) 2							
-						else if post.state == 'draft'
-							a(href='keystone/posts/'+post._id) post.title
-
-					a(href='keystone/posts').btn.btn-lg.btn-primary Report
+						if post.state == 'draft'												
+							<strong>Draft:</strong> 
+							=post.title
+							a(href='keystone/posts/'+post._id) &nbsp;&nbsp;Edit
+							<br/>	
+						//- else if post.state == 'published'
+						//- 	a(href='report/post/'+post.slug) View&nbsp;&nbsp;
+						//- 	<strong>Published:</strong> 
+						//- 	=post.title
+						//- 	<br/>										 	 	
+				hr
+				a(href='keystone/posts').btn.btn-lg.btn-primary Report
 			else
 				p
 					a(href='/keystone/').btn.btn-lg.btn-primary Enter
