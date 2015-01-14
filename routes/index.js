@@ -39,6 +39,7 @@ exports = module.exports = function(app) {
 	app.get('/', routes.views.index);
 	app.get('/report/:category?', routes.views.report);
 	app.get('/report/post/:post', routes.views.post);
+	//app.get('/report/post/ppt/:ppt',routes.views.ppt);
 	app.all('/marking', routes.views.marking);
 
 	// added

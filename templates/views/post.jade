@@ -10,6 +10,14 @@ block content
 			else
 				header
 					h1= data.post.title
+					hr
+					if data.post.doc.filename
+						h5='Attachment:'+data.post.doc.filename					
+						a(href='/files/'+data.post.doc.filename) Download	
+					else
+						h5='!'
+						<strong> Report Doc Don't Submit</strong>		 				
+					hr
 					h5 Posted 
 						if data.post.publishedDate
 							| on #{data.post._.publishedDate.format('YYYY-MM-DD')} 
@@ -22,6 +30,6 @@ block content
 								else
 									|  
 						if data.post.author
-							| by #{data.post.author.name.first}
+							| by #{data.post.author.name.first} 
 				.post			
 					!= data.post.content.full

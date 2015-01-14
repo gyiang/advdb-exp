@@ -20,7 +20,11 @@ Post.add({
 		brief: { type: Types.Html, wysiwyg: true, height: 50 },
 		extended: { type: Types.Html, wysiwyg: true, height: 200 }
 	},
-	categories: { type: Types.Relationship, ref: 'PostCategory', many: true }
+	categories: { type: Types.Relationship, ref: 'PostCategory', many: true },
+	doc:{type: Types.LocalFile,dest: './public/files',prefix: '/files/',
+		format: function(item, file){
+		return '<a href="/files/'+file.filename+'">'
+	}}
 });
 
 Post.schema.virtual('content.full').get(function() {
