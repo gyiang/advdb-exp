@@ -20,5 +20,5 @@ Mark.add({
 });
 
 Mark.defaultSort = '-createdAt';
-Mark.defaultColumns = 'name, stuid, markingto, score';
+Mark.defaultColumns = 'name, stuid, markingto, score,reason';
 Mark.register();

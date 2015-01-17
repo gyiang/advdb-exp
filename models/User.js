@@ -13,7 +13,7 @@ User.add({
 	email: { type: Types.Email, initial: true, required: true, index: true },
 	password: { type: Types.Password, initial: true, required: true }
 }, 'Permissions', {
-	isAdmin: { type: Boolean, label: 'Can access', index: true },
+	isAdmin: { type: Boolean, label: 'Can Report', index: true },
 	isCanMark: { type: Boolean, label: 'Can Marking', index: true ,default: true}
 });
 
@@ -40,5 +40,5 @@ User.relationship({ ref: 'Post', path: 'author' });
  * Registration
  */
 
-User.defaultColumns = 'name, email, isAdmin';
+User.defaultColumns = 'name,isAdmin,isCanMark';
 User.register();
