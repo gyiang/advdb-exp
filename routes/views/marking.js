@@ -65,7 +65,7 @@ exports = module.exports = function(req, res) {
 
 		req.flash('error', 'Please sign in to access marking page.');
 		res.redirect('/');
-	} else if(!req.user.canAccessKeystone){
+	} else if(!req.user.canMarking){
 		req.flash('error', 'No Access Permissions!!');
 		res.redirect('/');		
 	}else{
